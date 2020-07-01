@@ -1,0 +1,22 @@
+php_value upload_max_filesize 20M
+php_value post_max_size 20M
+php_value max_execution_time 200
+php_value max_input_time 200
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)$ IowaProject/API/index.php?q=$1 [L,QSA]
+
+#Заголовок Cache-Control
+
+<IfModule mod_headers.c>
+ Header append Cache-Control "no-store, no-cache, must-revalidate"
+</IfModule>
+
+ 
+
+# Заголовок Expires
+
+<IfModule mod_expires.c>
+ ExpiresActive On ExpiresDefault "now"
+</IfModule>
